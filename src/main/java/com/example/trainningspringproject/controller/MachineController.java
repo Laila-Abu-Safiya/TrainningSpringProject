@@ -42,8 +42,8 @@ public class MachineController {
         return "redirect:/";
     }
 
-    @RequestMapping("/edit/{id}")
-    public ModelAndView showEditMachinePage(@PathVariable(name = "id") int id) {
+    @RequestMapping("/tenant/{id}/machine/device/{user}")
+    public ModelAndView showEditMachinePage(@PathVariable(name = "id") int id,@PathVariable(name = "user") int user) {
         ModelAndView mav = new ModelAndView("new");
         Machine std = service.get(id);
         mav.addObject("Machine", std);

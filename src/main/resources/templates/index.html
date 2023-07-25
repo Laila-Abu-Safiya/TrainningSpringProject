@@ -37,7 +37,7 @@
   <td th:text="${Machine.Location}">Course</td>
   <td th:text="${Machine.user}">Fee</td>
   <td>
-    <a th:href="@{'/edit/' + ${Machine.id}}">Edit</a>
+    <a th:href="@{'/tenant/' + ${Machine.id} +'/machine/device/' + ${Machine.user}}">Edit</a>
   </td>
   <td>
     <a th:href="@{'/tenant/' + ${Machine.id} + '/machine/device'}">Delete</a>

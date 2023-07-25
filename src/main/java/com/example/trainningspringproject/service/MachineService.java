@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MachineService {
@@ -16,6 +17,9 @@ public class MachineService {
         return Repo.findAll();
     }
 
+    public Optional<Machine> listUserMachines(int id) {
+        return Repo.findById(id);
+    }
     public void delete(int id){
         Repo.deleteById(id);
     }

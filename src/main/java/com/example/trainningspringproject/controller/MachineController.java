@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class MachineController {
@@ -20,10 +21,18 @@ public class MachineController {
     public String viewHomePage(Model model) {
         List<Machine> listOfMachines = service.listAll();
         model.addAttribute("listOfMachines", listOfMachines);
-        System.out.print("Get / ");
+        System.out.print(listOfMachines);
         return "index";
     }
 
+    @GetMapping("/tenant/{id}/machine/device")
+    public String viewUserHome(@PathVariable int id, Model model){
+        System.out.print(id);
+        Optional<Machine> listOfUsersMachine = service.listUserMachines(id);
+       // System.out.print(listOfUsersMachine);
+        model.addAttribute("listOfUsersMachine", listOfUsersMachine);
+        return "index";
+    }
     @RequestMapping("/tenant/{id}/machine/device")
     public String deleteMachine(@PathVariable(name = "id") int id) {
         service.delete(id);
